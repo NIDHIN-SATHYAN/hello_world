@@ -1,0 +1,19 @@
+<?php
+session_start();
+$n=$_POST['name'];
+$e=$_POST['email'];
+$p=$_POST['pass'];
+$a=$_POST['age'];
+$pl=$_POST['place'];
+mysql_connect("182.50.133.87","nithinsathyan","nithinsathyan123");
+mysql_select_db("nidhinsathyan_car");
+$q="insert into register values('$n','$e','$pl','$a','$p')";
+$r=mysql_query($q);
+if($r)
+{
+	$_SESSION['user']=$e;
+header("location:index.php?log=ok");
+}
+else
+header("location:index.php?log=error");
+?>
